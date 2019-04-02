@@ -42,7 +42,7 @@
 
 <style scoped>
   .app-container{
-    padding: 40px 0;
+    padding: 40px 0 50px;
     overflow-x: hidden;
   }
   .v-enter{
