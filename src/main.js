@@ -18,20 +18,30 @@ Vue.filter('dateFormat', function (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
 //导入并配置 vue-resource
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
-//配置请求地址的根路径
-Vue.http.options.root = 'https://www.easy-mock.com/mock/5ca2c60ea8c93522d8561dc4/example/api';
+//全局配置请求地址的根路径和POST数据格式
+Vue.http.options.root = 'https://www.easy-mock.com/mock/5ca2c60ea8c93522d8561dc4/example';
+Vue.http.options.emulateJSON = true;
 
 //导入MUI的样式
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
 
-//按需导入mint-ui中的组件,并注册
-import { Header,Swipe, SwipeItem, Button} from 'mint-ui'
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+//按需导入mint-ui中的组件,并注册(使用懒加载需要全部导入)
+// import { Header,Swipe, SwipeItem, Button, Lazyload} from 'mint-ui'
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+// Vue.use(Lazyload);
+import MintUI from 'mint-ui'
+Vue.use(MintUI);
+import 'mint-ui/lib/style.css'
+
+//安装图片预览插件
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview);
+
 //导入app组件
 import app from './App.vue'
 

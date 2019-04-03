@@ -42,7 +42,7 @@
                 //         Toast('获取新闻列表失败！')
                 //     }
                 // })
-                this.$http.get('getnewslist').then(result => {
+                this.$http.get('api/getnewslist').then(result => {
                     if (result.body.data.status === 0) {
                         //获取到数据后，将数据保存到data身上
                         this.newslist = result.body.data.message;

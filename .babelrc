@@ -1,9 +1,10 @@
 {
-  "presets": ["env", "stage-0"],
+  "presets": ["env", "stage-0","es2015"],
+  "ignore": [ "./lib/mui/js/mui.js"] ,
   "plugins": ["transform-runtime", ["component", [
     {
       "libraryName": "mint-ui",
       "style": true
     }
-  ]]]
+  ]],"babel-plugin-transform-remove-strict-mode"]
 }

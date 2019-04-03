@@ -34,7 +34,7 @@
         },
         methods:{
             getNewsInfo(){
-                this.$http.get('getnewslist').then(result => {
+                this.$http.get('api/getnewslist').then(result => {
                     if (result.body.data.status === 0) {
                         this.newsinfo = result.body.data.message[this.id - 1];
                     }else {
