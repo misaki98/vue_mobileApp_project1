@@ -1,13 +1,7 @@
 <template>
     <div>
         <!--轮播图区域-->
-        <mt-swipe :auto="4000" class="swipe">
-            <!--在组件中使用循环时v-for，一定要在使用key-->
-            <mt-swipe-item v-for="item in swipeList" :key="item.img">
-                <!--当属性后面需要跟上数据的时候，需要使用v-bind，不然会被解析成字符串-->
-                <img :src="item.img" alt=""/>
-            </mt-swipe-item>
-        </mt-swipe>
+        <swiper :swipeList="swipeList" :isfull="true"></swiper>
 
         <!--九宫格的改造-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -47,6 +41,8 @@
 
 <script>
     import {Toast} from 'mint-ui'
+    //导入轮播图组件
+    import swiper from '../subcomponents/swiper.vue'
 
     export default {
         data() {
@@ -70,19 +66,15 @@
                     }
                 })
             }
+        },
+        components:{
+            "swiper":swiper
         }
     }
 </script>
 
 <style scoped>
-    .swipe {
-        height: 200px;
-    }
 
-    .mint-swipe-item img {
-        width: 100%;
-        height: 100%;
-    }
 
     .mui-grid-view.mui-grid-9 {
         background-color: #fff;
