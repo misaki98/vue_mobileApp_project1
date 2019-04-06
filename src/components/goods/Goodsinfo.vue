@@ -77,7 +77,7 @@
                     //    保存获取到的商品数据
                 },
                 ballFlag: false, //控制小球隐藏和显示的标识符
-                selectedCountL: 1 //默认进来时值为1，保存用户选中的商品数量
+                selectedCount: 1 //默认进来时值为1，保存用户选中的商品数量
             }
         },
         created() {
@@ -123,6 +123,19 @@
             addtoShopcar() {
                 //    添加到购物车
                 this.ballFlag = !this.ballFlag;
+            //    拼接出一个商品对象，该对象要保存到Vuex中的Store中
+            //    而获取这些数据的方法必须写到Vuex中，不能在此处定义
+                var goodsinfo = {
+                    id: this.id,
+                    count: this.selectedCount,
+                    price: this.goodsinfo.sell_price,
+                    selected: true
+                };
+                console.log(goodsinfo);
+                //  调用 store 中的mutations来讲goodsinfo的数据传递到商品购物车中
+                this.$store.commit('addtoCar', goodsinfo);
+
+
 
             },
             // 控制动画的三个钩子函数
