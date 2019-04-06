@@ -31,7 +31,10 @@
                     </p>
                     <p>
                         购买数量：
-                        <numbox></numbox>
+                        <!-- 将父组件的方法作为一个事件属性绑定传递给子组件 -->
+                        <!-- 在子组件中可以用this.$emit()来触发此事件 -->
+                        <!-- 子组件最大值必须从父组件中得到库存数量，故需要自子组件上绑定数据来传递-->
+                        <numbox @getcount="getSelectCount" :max="goodsinfo.stock_quantity"></numbox>
                     </p>
                     <p>
                         <mt-button type="primary" size="small">立即购买</mt-button>
@@ -73,7 +76,8 @@
                 goodsinfo: {
                     //    保存获取到的商品数据
                 },
-                ballFlag: false //控制小球隐藏和显示的标识符
+                ballFlag: false, //控制小球隐藏和显示的标识符
+                selectedCountL: 1 //默认进来时值为1，保存用户选中的商品数量
             }
         },
         created() {
@@ -146,6 +150,11 @@
             },
             afterEnter(el){
                 this.ballFlag = !this.ballFlag;
+            },
+            getSelectCount(count){
+            //    获取子组件的count值
+            //    当子组件把选中的数量传给父组件的时候，把选中的值保存到父组件的data身上
+                this.selectedCount = count;
             }
         },
         components: {
