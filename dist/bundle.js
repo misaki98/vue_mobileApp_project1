@@ -4770,7 +4770,7 @@ module.exports = function normalizeComponent (
   functionalTemplate,
   injectStyles,
   scopeId,
-  moduleIdentifier /* server only */
+  moduleIdentifier /* demo-server only */
 ) {
   var esModule
   var scriptExports = rawScriptExports = rawScriptExports || {}
@@ -4805,7 +4805,7 @@ module.exports = function normalizeComponent (
   }
 
   var hook
-  if (moduleIdentifier) { // server build
+  if (moduleIdentifier) { // demo-server build
     hook = function (context) {
       // 2.3 injection
       context =
@@ -4879,7 +4879,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   if (!hasDocument) {
     throw new Error(
     'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+    "Use { target: 'node' } in your Webpack config to indicate a demo-server-rendering environment."
   ) }
 }
 
@@ -4995,9 +4995,9 @@ function addStyle (obj /* StyleObjectPart */) {
       return noop
     } else {
       // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
+      // for some reason Chrome can't handle source map in demo-server-rendered
       // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
+      // created and inserted dynamically. So we remove the demo-server rendered
       // styles and inject new ones.
       styleElement.parentNode.removeChild(styleElement)
     }
@@ -5772,7 +5772,7 @@ module.exports = function normalizeComponent (
   compiledTemplate,
   injectStyles,
   scopeId,
-  moduleIdentifier /* server only */
+  moduleIdentifier /* demo-server only */
 ) {
   var esModule
   var scriptExports = rawScriptExports = rawScriptExports || {}
@@ -5801,7 +5801,7 @@ module.exports = function normalizeComponent (
   }
 
   var hook
-  if (moduleIdentifier) { // server build
+  if (moduleIdentifier) { // demo-server build
     hook = function (context) {
       // 2.3 injection
       context =
@@ -5886,7 +5886,7 @@ var Component = __webpack_require__(0)(
   injectStyle,
   /* scopeId */
   null,
-  /* moduleIdentifier (server only) */
+  /* moduleIdentifier (demo-server only) */
   null
 )
 
@@ -6478,7 +6478,7 @@ function once (fn) {
   }
 }
 
-var SSR_ATTR = 'data-server-rendered';
+var SSR_ATTR = 'data-demo-server-rendered';
 
 var ASSET_TYPES = [
   'component',
@@ -6683,13 +6683,13 @@ if (inBrowser) {
 }
 
 // this needs to be lazy-evaled because vue may be required before
-// vue-server-renderer can set VUE_ENV
+// vue-demo-server-renderer can set VUE_ENV
 var _isServer;
 var isServerRendering = function () {
   if (_isServer === undefined) {
     /* istanbul ignore if */
     if (!inBrowser && !inWeex && typeof global !== 'undefined') {
-      // detect presence of vue-server-renderer and avoid
+      // detect presence of vue-demo-server-renderer and avoid
       // Webpack shimming the process
       _isServer = global['process'] && global['process'].env.VUE_ENV === 'server';
     } else {
@@ -9341,7 +9341,7 @@ function createComponent (
     if (Ctor === undefined) {
       // return a placeholder node for async component, which is rendered
       // as a comment node but preserves all the raw information for the node.
-      // the information will be used for async server-rendering and hydration.
+      // the information will be used for async demo-server-rendering and hydration.
       return createAsyncPlaceholder(
         asyncFactory,
         data,
@@ -12532,7 +12532,7 @@ function createPatchFunction (backend) {
               ) {
                 hydrationBailed = true;
                 console.warn('Parent: ', elm);
-                console.warn('server innerHTML: ', i);
+                console.warn('demo-server innerHTML: ', i);
                 console.warn('client innerHTML: ', elm.innerHTML);
               }
               return false
@@ -12617,7 +12617,7 @@ function createPatchFunction (backend) {
       } else {
         if (isRealElement) {
           // mounting to a real element
-          // check if this is server-rendered content and if we can perform
+          // check if this is demo-server-rendered content and if we can perform
           // a successful hydration.
           if (oldVnode.nodeType === 1 && oldVnode.hasAttribute(SSR_ATTR)) {
             oldVnode.removeAttribute(SSR_ATTR);
@@ -12630,14 +12630,14 @@ function createPatchFunction (backend) {
             } else if (process.env.NODE_ENV !== 'production') {
               warn(
                 'The client-side rendered virtual DOM tree is not matching ' +
-                'server-rendered content. This is likely caused by incorrect ' +
+                'demo-server-rendered content. This is likely caused by incorrect ' +
                 'HTML markup, for example nesting block-level elements inside ' +
                 '<p>, or missing <tbody>. Bailing hydration and performing ' +
                 'full client-side render.'
               );
             }
           }
-          // either not server-rendered, or hydration failed.
+          // either not demo-server-rendered, or hydration failed.
           // create an empty node and replace it
           oldVnode = emptyNodeAt(oldVnode);
         }
@@ -22952,7 +22952,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-6d8edfc6"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_comment_vue___default.a,
@@ -25756,7 +25756,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-235952e1"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_swiper_vue___default.a,
@@ -40110,7 +40110,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-25534bfe"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_homeContainer_vue___default.a,
@@ -40522,7 +40522,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-0678e374"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_MemberContainer_vue___default.a,
@@ -40649,7 +40649,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-21acea58"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ShopcarContainer_vue___default.a,
@@ -40747,7 +40747,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-6b1c352f"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_shopcar_numbox_vue___default.a,
@@ -41039,7 +41039,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-cceecc10"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_SearchContainer_vue___default.a,
@@ -41166,7 +41166,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-2f37d966"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_newslist_vue___default.a,
@@ -41317,7 +41317,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_NewsInfo_vue___default.a,
@@ -41601,7 +41601,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-6948cfce"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_PhototList_vue___default.a,
@@ -41800,7 +41800,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-6866c8e2"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_PhotoInfo_vue___default.a,
@@ -41950,7 +41950,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-1248e5c4"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_GoodList_vue___default.a,
@@ -42123,7 +42123,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-9f5e03ea"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Goodsinfo_vue___default.a,
@@ -42221,7 +42221,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-3bdad149"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_goodsinfo_numbox_vue___default.a,
@@ -42552,7 +42552,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_GoodsDesc_vue___default.a,
@@ -42681,7 +42681,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-ed6cfd1c"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_GoodsComment_vue___default.a,
@@ -45812,7 +45812,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_vue_loader_lib_selector_type_script_index_0_preview_vue___default.a,
@@ -46121,7 +46121,7 @@ var __vue_template_functional__ = false
 var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = "data-v-7ba5bd90"
-/* moduleIdentifier (server only) */
+/* moduleIdentifier (demo-server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_App_vue___default.a,

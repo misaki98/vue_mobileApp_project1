@@ -4,7 +4,7 @@ var path = require('path')
 // 如果要配置插件，需要在导出的对象中，挂载一个 plugins 节点
 var htmlWebpackPlugin = require('html-webpack-plugin')
 
-// 当以命令行形式运行 webpack 或 webpack-dev-server 的时候，工具会发现，我们并没有提供 要打包 的文件的 入口 和 出口文件，此时，他会检查项目根目录中的配置文件，并读取这个文件，就拿到了导出的这个 配置对象，然后根据这个对象，进行打包构建
+// 当以命令行形式运行 webpack 或 webpack-dev-demo-server 的时候，工具会发现，我们并没有提供 要打包 的文件的 入口 和 出口文件，此时，他会检查项目根目录中的配置文件，并读取这个文件，就拿到了导出的这个 配置对象，然后根据这个对象，进行打包构建
 module.exports = {
   entry: path.join(__dirname, './src/main.js'), // 入口文件
   output: { // 指定输出选项
